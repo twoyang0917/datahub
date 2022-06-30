@@ -1,0 +1,26 @@
+{
+    "source":
+    {
+        "type": "hive",
+        "config":
+        {
+            "host_port": "10.131.64.28:7001",
+            "database": [
+            	"blued_common",
+            	"blued_overseas",
+            	"blued_log",
+            	"blued_apm_overseas"
+            ],
+            "username": "work",
+            "env": "PROD"
+        }
+    },
+    "sink":
+    {
+        "type": "datahub-rest",
+        "config":
+        {
+            "server": "http://datahub.irisdt.com:8080"
+        }
+    }
+}
