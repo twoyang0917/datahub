@@ -2,3 +2,4 @@ user.props
 credential.py
 venv/
 plugins/
+__pycache__

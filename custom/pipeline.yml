@@ -1,0 +1,11 @@
+source:
+    type: hive
+    config:
+        host_port: '10.131.64.28:7001'
+        database: 'blued_log'
+        username: work
+        env: PROD
+sink:
+    type: datahub-rest
+    config:
+        server: 'http://datahub.irisdt.com:8080'
