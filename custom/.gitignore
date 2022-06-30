@@ -1,5 +1,5 @@
 user.props
-credential.py
+credentail.py
 venv/
 plugins/
 __pycache__
