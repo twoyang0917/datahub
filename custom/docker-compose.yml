@@ -202,7 +202,7 @@ services:
      - DB_PASS=datahub
      - DB_SERVER=mysql
      - DB_PORT=3306
-     - DB_DUMP_CRON=0 3 * * *
+     - DB_DUMP_CRON='0 3 * * *'
 version: '2.3'
 volumes:
   esdata: null

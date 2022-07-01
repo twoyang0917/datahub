@@ -1,5 +1,6 @@
 user.props
 credentail.py
+recipe.json
 venv/
 plugins/
 __pycache__

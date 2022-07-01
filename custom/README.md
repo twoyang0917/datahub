@@ -1,7 +1,7 @@
-
-> Freeze to specified version defined in env file.
-
+```bash
+# Freeze to specified version defined in env file.
 source .env
+```
 
 # Install
 ```bash
@@ -31,6 +31,16 @@ datahub docker check
 ```
 
 # Ingestion
++ test ingestion
+```bash
+docker run --rm \
+    -v ${PWD}/venv:/venv \
+    -v ${PWD}/pipeline.yml:/tmp/pipeline.yml \
+    acryldata/datahub-actions:${ACTIONS_VERSION} \
+    /venv/bin/python -m datahub --debug ingest -c /tmp/pipeline.yml
+```
+
++ create ingestion on WebUI
 ```bash
 # get your cookies & headers via chrome browser. save to credential.py
 # https://curlconverter.com/
@@ -38,6 +48,22 @@ datahub docker check
 # change endpoint url and recipe.json
 
 python ingestions.py
+```
+
+# Backup
+```bash
+docker run --rm \
+    --network="datahub_network" \
+    --user 0 \
+    -e DB_DUMP_TARGET=/db \
+    -e DB_DUMP_SAFECHARS=true \
+    -e DB_USER=root \
+    -e DB_PASS=datahub \
+    -e DB_SERVER=mysql \
+    -e DB_PORT=3306 \
+    -e DB_DUMP_CRON="36 14 * * *" \
+    -v ${HOME}/datahub/backup/mysql:/db \
+    databack/mysql-backup
 ```
 
 # RestoreIndices
