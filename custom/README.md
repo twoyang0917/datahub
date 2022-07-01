@@ -10,7 +10,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
 pip install --upgrade pip wheel setuptools
-pip install acryl-datahub
+pip install acryl-datahub==${DATAHUB_VERSION}
 pip install acryl-datahub[hive]==${DATAHUB_VERSION}
 pip install acryl-datahub-actions==${ACTIONS_VERSION}
 
@@ -22,6 +22,9 @@ python -m venv --copies /venv
 . /venv/bin/activate
 export DATAHUB_VERSION=0.8.39
 pip install acryl-datahub[hive]==${DATAHUB_VERSION}
+
+curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 ```
 
 # Start
@@ -61,7 +64,7 @@ docker run --rm \
     -e DB_PASS=datahub \
     -e DB_SERVER=mysql \
     -e DB_PORT=3306 \
-    -e DB_DUMP_CRON="36 14 * * *" \
+    -e 'DB_DUMP_CRON=2 6 * * *' \
     -v ${HOME}/datahub/backup/mysql:/db \
     databack/mysql-backup
 ```

@@ -1,6 +1,7 @@
 user.props
-credentail.py
+credential.py
 recipe.json
+pipeline.yml
 venv/
 plugins/
 __pycache__
